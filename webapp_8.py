@@ -67,7 +67,7 @@ def find_and_display_occurrences(lines, search_term):
 
 # --- Lógica para cargar el archivo automáticamente desde GitHub ---
 # URL del archivo de texto en formato "raw" en tu repositorio de GitHub.
-GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/constructorinterlineal/main/mi_archivo.txt"
+GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/refs/heads/main/NuevoTestamentoInterlineal.txt"
 
 @st.cache_data(ttl=3600)
 def load_text_from_github(url):
@@ -165,3 +165,4 @@ def main():
 # Ejecuta la función principal si el script se ejecuta directamente
 if __name__ == "__main__":
     main()
+
