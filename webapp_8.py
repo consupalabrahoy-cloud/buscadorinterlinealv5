@@ -1,17 +1,27 @@
 import streamlit as st
 import re
 import requests
+import unicodedata
 
-def find_and_display_occurrences(lines, search_term):
+def is_greek(text):
+    """Verifica si el texto contiene caracteres griegos."""
+    for char in text:
+        # Se utilizan rangos Unicode para detectar caracteres griegos
+        if 'GREEK' in unicodedata.name(char, '').upper():
+            return True
+    return False
+
+def find_occurrences(lines, search_term):
     """
-    Encuentra y muestra todas las ocurrencias de una subcadena en las líneas de texto,
-    incluyendo la línea en español y la línea en griego,
-    y además el encabezado de la sección y el número de versículo.
+    Encuentra todas las ocurrencias de un término de búsqueda en pares de líneas
+    y devuelve una lista de resultados, asegurando el emparejamiento correcto.
     """
     occurrences = []
     current_heading = "Sin encabezado"
     
-    # Itera sobre las líneas de dos en dos para emparejar español (i) y griego (i+1)
+    is_greek_search = is_greek(search_term)
+
+    # Itera sobre las líneas de dos en dos
     for i in range(0, len(lines) - 1, 2):
         line1 = lines[i].strip()
         line2 = lines[i+1].strip()
@@ -32,32 +42,32 @@ def find_and_display_occurrences(lines, search_term):
         spanish_text = spanish_line_match.group(2).strip()
         greek_text = line2.strip()
         
-        # --- Lógica de búsqueda en español ---
-        if search_term.lower() in spanish_text.lower():
-            occurrences.append({
-                "heading": current_heading,
-                "verse": verse_number,
-                "spanish_text": spanish_text,
-                "greek_text": greek_text,
-                "found_word": search_term,
-                "language": "Español"
-            })
-
-        # --- Lógica de búsqueda en griego ---
-        if search_term.lower() in greek_text.lower():
-            words_in_greek_line = re.findall(r'[\w’]+', greek_text)
-            for word in words_in_greek_line:
-                if search_term.lower() in word.lower():
-                    # Evita duplicados si la palabra buscada es la misma en ambos idiomas
-                    if search_term.lower() not in spanish_text.lower() or word.lower() != search_term.lower():
-                        occurrences.append({
-                            "heading": current_heading,
-                            "verse": verse_number,
-                            "spanish_text": spanish_text,
-                            "greek_text": greek_text,
-                            "found_word": word,
-                            "language": "Griego"
-                        })
+        # Lógica de búsqueda separada por idioma
+        if is_greek_search:
+            # Búsqueda en griego
+            if search_term.lower() in greek_text.lower():
+                words_in_greek_line = re.findall(r'[\w’]+', greek_text)
+                found_word = next((word for word in words_in_greek_line if search_term.lower() in word.lower()), None)
+                if found_word:
+                    occurrences.append({
+                        "heading": current_heading,
+                        "verse": verse_number,
+                        "spanish_text": spanish_text,
+                        "greek_text": greek_text,
+                        "found_word": found_word,
+                        "language": "Griego"
+                    })
+        else:
+            # Búsqueda en español
+            if search_term.lower() in spanish_text.lower():
+                occurrences.append({
+                    "heading": current_heading,
+                    "verse": verse_number,
+                    "spanish_text": spanish_text,
+                    "greek_text": greek_text,
+                    "found_word": search_term,
+                    "language": "Español"
+                })
     
     return occurrences
 
@@ -67,6 +77,7 @@ GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscad
 
 @st.cache_data(ttl=3600)
 def load_text_from_github(url):
+    """Carga el contenido de un archivo de texto desde una URL de GitHub."""
     try:
         response = requests.get(url)
         if response.status_code == 200:
@@ -79,22 +90,17 @@ def load_text_from_github(url):
         return None
 
 def main():
-    """
-    Función principal de la aplicación Streamlit.
-    Configura la interfaz y maneja la lógica.
-    """
+    """Función principal de la aplicación Streamlit."""
     st.title("Buscador avanzado en texto interlineal 🇬🇷🇪🇸")
     st.markdown("---")
     
     st.write("Esta aplicación busca palabras o secuencias de letras en español o griego en un archivo de texto interlineal y muestra las ocurrencias y su contexto. El archivo se carga automáticamente desde GitHub. 🔍")
 
-    # Carga el contenido del archivo
     file_content = load_text_from_github(GITHUB_RAW_URL)
 
     if file_content is None:
-        return # Detiene la ejecución si el archivo no se pudo cargar
+        return
 
-    # Widget para la entrada de la subcadena a buscar
     search_term = st.text_input(
         "Ingresa la secuencia de letras a buscar:",
         placeholder="Ejemplo: σπ o am"
@@ -107,58 +113,28 @@ def main():
             st.warning("Por favor, ingresa una secuencia de letras a buscar.")
         else:
             try:
-                # Lee el contenido del archivo y lo divide en líneas
                 lines = file_content.splitlines()
-
-                # Elimina las líneas vacías para un mejor procesamiento
                 lines = [line for line in lines if line.strip()]
 
-                # Llama a la función principal para buscar y obtener las ocurrencias
-                all_occurrences = find_and_display_occurrences(lines, search_term)
+                all_occurrences = find_occurrences(lines, search_term)
                 
-                # Filtra las ocurrencias por idioma
-                greek_occurrences = [o for o in all_occurrences if o["language"] == "Griego"]
-                spanish_occurrences = [o for o in all_occurrences if o["language"] == "Español"]
-
                 if not all_occurrences:
                     st.warning(f"No se encontraron palabras que contengan '{search_term}' en el archivo.")
                 else:
-                    # Crea las pestañas para mostrar los resultados
-                    tab_greek, tab_spanish = st.tabs([
-                        f"Resultados en Griego ({len(greek_occurrences)})",
-                        f"Resultados en Español ({len(spanish_occurrences)})"
-                    ])
-
-                    # Muestra los resultados en la pestaña de Griego
-                    with tab_greek:
-                        if greek_occurrences:
-                            st.subheader("Ocurrencias y su contexto en griego:")
-                            for occurrence in greek_occurrences:
-                                st.markdown(f"**{occurrence['heading']}**")
-                                st.markdown(f"{occurrence['verse']} {occurrence['spanish_text']}")
-                                st.markdown(f"{occurrence['verse']} {occurrence['greek_text']}")
-                                st.markdown(f"**Palabra encontrada:** `{occurrence['found_word']}`")
-                                st.markdown("---")
-                        else:
-                            st.info("No se encontraron coincidencias en griego.")
-
-                    # Muestra los resultados en la pestaña de Español
-                    with tab_spanish:
-                        if spanish_occurrences:
-                            st.subheader("Ocurrencias y su contexto en español:")
-                            for occurrence in spanish_occurrences:
-                                st.markdown(f"**{occurrence['heading']}**")
-                                st.markdown(f"{occurrence['verse']} {occurrence['spanish_text']}")
-                                st.markdown(f"{occurrence['verse']} {occurrence['greek_text']}")
-                                st.markdown(f"**Palabra encontrada:** `{occurrence['found_word']}`")
-                                st.markdown("---")
-                        else:
-                            st.info("No se encontraron coincidencias en español.")
+                    # Usa el idioma del primer resultado para nombrar la pestaña
+                    first_language = all_occurrences[0]["language"]
+                    tab_name = f"Resultados en {first_language} ({len(all_occurrences)})"
+                    
+                    with st.expander(tab_name, expanded=True):
+                        for occurrence in all_occurrences:
+                            st.markdown(f"**{occurrence['heading']}**")
+                            st.markdown(f"{occurrence['verse']} {occurrence['spanish_text']}")
+                            st.markdown(f"{occurrence['verse']} {occurrence['greek_text']}")
+                            st.markdown(f"**Palabra encontrada:** `{occurrence['found_word']}`")
+                            st.markdown("---")
 
             except Exception as e:
                 st.error(f"Ocurrió un error al procesar el archivo: {e}")
 
-# Ejecuta la función principal si el script se ejecuta directamente
 if __name__ == "__main__":
     main()
-
