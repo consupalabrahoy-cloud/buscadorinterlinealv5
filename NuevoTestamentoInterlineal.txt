@@ -1582,7 +1582,7 @@ Mateo 12
 
 
 47 Y le dijo uno: He aquí tu madre y tus hermanos están fuera, que te quieren hablar.
-47  
+47 *** 
 
 
 48 Y respondiendo él al que le decía esto, dijo: ¿Quién es mi madre y quiénes son mis hermanos?
@@ -2331,7 +2331,7 @@ Mateo 17
 
 
 21 Mas este linaje no sale sino por oración y ayuno.
-21  
+21 ***
 
 
 22 Y estando ellos en Galilea, Jesús les dijo: El Hijo del hombre será entregado en manos de hombres,
@@ -2400,7 +2400,7 @@ Mateo 18
 
 
 11 Porque el Hijo del hombre ha venido para salvar lo que se había perdido.
-  
+11 *** 
 
 12 ¿Qué os parece? Si tuviese algún hombre cien ovejas, y se descarriase una de ellas, ¿no iría por los montes, dejadas las noventa y nueve, a buscar la que se había descarriado?
 12 τι υμιν δοκει εαν γενηται τινι ανθρωπω εκατον προβατα και πλανηθη εν εξ αυτων ουχι αφησει τα ενενηκοντα εννεα επι τα ορη και πορευθεις ζητει το πλανωμενον
@@ -3185,102 +3185,106 @@ Mateo 23
 
 
 14 Ay de vosotros, escribas y Fariseos, hipócritas! porque coméis las casas de las viudas, y por pretexto hacéis larga oración: por esto llevaréis mas grave juicio.
-14  15 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι περιαγετε την θαλασσαν και την ξηραν ποιησαι ενα προσηλυτον και οταν γενηται ποιειτε αυτον υιον γεεννης διπλοτερον υμων
+14 *** 
 
 
 15 Ay de vosotros, escribas y Fariseos, hipócritas! porque rodeáis la mar y la tierra por hacer un prosélito; y cuando fuere hecho, le hacéis hijo del infierno doble más que vosotros.
-16 ουαι υμιν οδηγοι τυφλοι οι λεγοντες ος αν ομοση εν τω ναω ουδεν εστιν ος δ αν ομοση εν τω χρυσω του ναου οφειλει
+15 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι περιαγετε την θαλασσαν και την ξηραν ποιησαι ενα προσηλυτον και οταν γενηται ποιειτε αυτον υιον γεεννης διπλοτερον υμων
 
 
 16 Ay de vosotros, guías ciegos! que decís: Cualquiera que jurare por el templo es nada; mas cualquiera que jurare por el oro del templo, deudor es.
-17 μωροι και τυφλοι τις γαρ μειζων εστιν ο χρυσος η ο ναος ο αγιασας τον χρυσον
+16 ουαι υμιν οδηγοι τυφλοι οι λεγοντες ος αν ομοση εν τω ναω ουδεν εστιν ος δ αν ομοση εν τω χρυσω του ναου οφειλει
 
 
 17 Insensatos y ciegos! porque ¿cuál es mayor, el oro, ó el templo que santifica al oro?
-18 και ος αν ομοση εν τω θυσιαστηριω ουδεν εστιν ος δ αν ομοση εν τω δωρω τω επανω αυτου οφειλει
+17 μωροι και τυφλοι τις γαρ μειζων εστιν ο χρυσος η ο ναος ο αγιασας τον χρυσον
 
 
 18 Y: Cualquiera que jurare por el altar, es nada; mas cualquiera que jurare por el presente que está sobre él, deudor es.
-19 τυφλοι τι γαρ μειζον το δωρον η το θυσιαστηριον το αγιαζον το δωρον
+18 και ος αν ομοση εν τω θυσιαστηριω ουδεν εστιν ος δ αν ομοση εν τω δωρω τω επανω αυτου οφειλει
 
 
 19 Necios y ciegos! porque, ¿cuál es mayor, el presente, ó el altar que santifica al presente?
-20 ο ουν ομοσας εν τω θυσιαστηριω ομνυει εν αυτω και εν πασιν τοις επανω αυτου
+19 τυφλοι τι γαρ μειζον το δωρον η το θυσιαστηριον το αγιαζον το δωρον
 
 
 20 Pues el que jurare por el altar, jura por él, y por todo lo que está sobre él;
-21 και ο ομοσας εν τω ναω ομνυει εν αυτω και εν τω κατοικουντι αυτον
+20 ο ουν ομοσας εν τω θυσιαστηριω ομνυει εν αυτω και εν πασιν τοις επανω αυτου
 
 
 21 y el que jurare por el templo, jura por él, y por Aquél que habita en él;
-22 και ο ομοσας εν τω ουρανω ομνυει εν τω θρονω του θεου και εν τω καθημενω επανω αυτου
+21 και ο ομοσας εν τω ναω ομνυει εν αυτω και εν τω κατοικουντι αυτον
 
 
 22 Y el que jura por el cielo, jura por el trono de Dios, y por Aquél que está sentado sobre él.
-23 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι αποδεκατουτε το ηδυοσμον και το ανηθον και το κυμινον και αφηκατε τα βαρυτερα του νομου την κρισιν και το ελεος και την πιστιν ταυτα δε εδει ποιησαι κακεινα μη αφειναι
+22 και ο ομοσας εν τω ουρανω ομνυει εν τω θρονω του θεου και εν τω καθημενω επανω αυτου
 
 
 23 Ay de vosotros, escribas y Fariseos, hipócritas! porque diezmáis la menta y el eneldo y el comino, y dejasteis lo que es lo más grave de la ley, es a saber, el juicio y la misericordia y la fe: esto era menester hacer, y no dejar lo otro.
-24 οδηγοι τυφλοι διυλιζοντες τον κωνωπα την δε καμηλον καταπινοντες
+23 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι αποδεκατουτε το ηδυοσμον και το ανηθον και το κυμινον και αφηκατε τα βαρυτερα του νομου την κρισιν και το ελεος και την πιστιν ταυτα δε εδει ποιησαι κακεινα μη αφειναι
 
 
 24 Guías ciegos, que coláis el mosquito, mas tragáis el camello!
-25 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι καθαριζετε το εξωθεν του ποτηριου και της παροψιδος εσωθεν δε γεμουσιν εξ αρπαγης και ακρασιας
+24 οδηγοι τυφλοι διυλιζοντες τον κωνωπα την δε καμηλον καταπινοντες
 
 
 25 Ay de vosotros, escribas y Fariseos, hipócritas! porque limpiais lo que está de fuera del vaso y del plato; mas de dentro están llenos de robo y de injusticia.
-26 φαρισαιε τυφλε καθαρισον πρωτον το εντος του ποτηριου [και της παροψιδος] ινα γενηται και το εκτος αυτου καθαρον
+25 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι καθαριζετε το εξωθεν του ποτηριου και της παροψιδος εσωθεν δε γεμουσιν εξ αρπαγης και ακρασιας
 
 
 26 Fariseo ciego, limpia primero lo de dentro del vaso y del plato, para que también lo de fuera se haga limpio!
-27 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι παρομοιαζετε ταφοις κεκονιαμενοις οιτινες εξωθεν μεν φαινονται ωραιοι εσωθεν δε γεμουσιν οστεων νεκρων και πασης ακαθαρσιας
+26 φαρισαιε τυφλε καθαρισον πρωτον το εντος του ποτηριου [και της παροψιδος] ινα γενηται και το εκτος αυτου καθαρον
 
 
 27 Ay de vosotros, escribas y Fariseos, hipócritas! porque sois semejantes a sepulcros blanqueados, que de fuera, a la verdad, se muestran hermosos, mas de dentro están llenos de huesos de muertos y de toda suciedad.
-28 ουτως και υμεις εξωθεν μεν φαινεσθε τοις ανθρωποις δικαιοι εσωθεν δε εστε μεστοι υποκρισεως και ανομιας
+27 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι παρομοιαζετε ταφοις κεκονιαμενοις οιτινες εξωθεν μεν φαινονται ωραιοι εσωθεν δε γεμουσιν οστεων νεκρων και πασης ακαθαρσιας
 
 
 28 Así también vosotros de fuera, a la verdad, os mostráis justos a los hombres; mas de dentro, llenos estáis de hipocresía é iniquidad.
-29 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι οικοδομειτε τους ταφους των προφητων και κοσμειτε τα μνημεια των δικαιων
+28 ουτως και υμεις εξωθεν μεν φαινεσθε τοις ανθρωποις δικαιοι εσωθεν δε εστε μεστοι υποκρισεως και ανομιας
 
 
 29 Ay de vosotros, escribas y Fariseos, hipócritas! porque edificáis los sepulcros de los profetas, y adornáis los monumentos de los justos,
-30 και λεγετε ει ημεθα εν ταις ημεραις των πατερων ημων ουκ αν ημεθα αυτων κοινωνοι εν τω αιματι των προφητων
+29 ουαι υμιν γραμματεις και φαρισαιοι υποκριται οτι οικοδομειτε τους ταφους των προφητων και κοσμειτε τα μνημεια των δικαιων
 
 
 30 y decís: Si fuéramos en los días de nuestros padres, no hubiéramos sido sus compañeros en la sangre de los profetas.
-31 ωστε μαρτυρειτε εαυτοις οτι υιοι εστε των φονευσαντων τους προφητας
+30 και λεγετε ει ημεθα εν ταις ημεραις των πατερων ημων ουκ αν ημεθα αυτων κοινωνοι εν τω αιματι των προφητων
 
 
 31 Así que, testimonio dais a vosotros mismos, que sois hijos de aquellos que mataron a los profetas.
-32 και υμεις πληρωσατε το μετρον των πατερων υμων
+31 ωστε μαρτυρειτε εαυτοις οτι υιοι εστε των φονευσαντων τους προφητας
 
 
 32 Vosotros también henchid la medida de vuestros padres!
-33 οφεις γεννηματα εχιδνων πως φυγητε απο της κρισεως της γεεννης
+32 και υμεις πληρωσατε το μετρον των πατερων υμων
 
 
 33 Serpientes, generación de víboras! ¿cómo evitaréis el juicio del infierno?
-34 δια τουτο ιδου εγω αποστελλω προς υμας προφητας και σοφους και γραμματεις εξ αυτων αποκτενειτε και σταυρωσετε και εξ αυτων μαστιγωσετε εν ταις συναγωγαις υμων και διωξετε απο πολεως εις πολιν
+33 οφεις γεννηματα εχιδνων πως φυγητε απο της κρισεως της γεεννης
 
 
 34 Por tanto, he aquí, yo envío a vosotros profetas, y sabios, y escribas: y de ellos, a unos mataréis y crucificaréis, y a otros de ellos azotaréis en vuestras sinagogas, y perseguiréis de ciudad en ciudad:
-35 οπως ελθη εφ υμας παν αιμα δικαιον εκχυννομενον επι της γης απο του αιματος αβελ του δικαιου εως του αιματος ζαχαριου υιου βαραχιου ον εφονευσατε μεταξυ του ναου και του θυσιαστηριου
+34 δια τουτο ιδου εγω αποστελλω προς υμας προφητας και σοφους και γραμματεις εξ αυτων αποκτενειτε και σταυρωσετε και εξ αυτων μαστιγωσετε εν ταις συναγωγαις υμων και διωξετε απο πολεως εις πολιν
 
 
 35 Para que venga sobre vosotros toda la sangre justa que se ha derramado sobre la tierra, desde la sangre de Abel el justo, hasta la sangre de Zacarías, hijo de Barachîas, al cual matasteis entre el templo y el altar.
-36 αμην λεγω υμιν ηξει ταυτα παντα επι την γενεαν ταυτην
+35 οπως ελθη εφ υμας παν αιμα δικαιον εκχυννομενον επι της γης απο του αιματος αβελ του δικαιου εως του αιματος ζαχαριου υιου βαραχιου ον εφονευσατε μεταξυ του ναου και του θυσιαστηριου
 
 
 36 De cierto os digo que todo esto vendrá sobre esta generación.
-37 ιερουσαλημ ιερουσαλημ η αποκτεινουσα τους προφητας και λιθοβολουσα τους απεσταλμενους προς αυτην ποσακις ηθελησα επισυναγαγειν τα τεκνα σου ον τροπον ορνις επισυναγει τα νοσσια [αυτης] υπο τας πτερυγας και ουκ ηθελησατε
+36 αμην λεγω υμιν ηξει ταυτα παντα επι την γενεαν ταυτην
 
 
 37 Jerusalem, Jerusalem, que matas a los profetas, y apedreas a los que son enviados a ti! ­cuántas veces quise juntar tus hijos, como la gallina junta sus pollos debajo de las alas, y no quisiste!
-38 ιδου αφιεται υμιν ο οικος υμων
+37 ιερουσαλημ ιερουσαλημ η αποκτεινουσα τους προφητας και λιθοβολουσα τους απεσταλμενους προς αυτην ποσακις ηθελησα επισυναγαγειν τα τεκνα σου ον τροπον ορνις επισυναγει τα νοσσια [αυτης] υπο τας πτερυγας και ουκ ηθελησατε
 
 
 38 He aquí vuestra casa os es dejada desierta.
+38 ιδου αφιεται υμιν ο οικος υμων
+
+
+39 Porque os digo que desde ahora no me veréis, hasta que digáis: Bendito el que viene en el nombre del Señor.
 39 λεγω γαρ υμιν ου μη με ιδητε απ αρτι εως αν ειπητε ευλογημενος ο ερχομενος εν ονοματι κυριου
 
 
@@ -5808,7 +5812,7 @@ Marcos 9
 
 
 44 donde su gusano no muere, y el fuego nunca se apaga.
-44  
+44 *** 
 
 
 45 Y si tu pie te fuere ocasión de caer, córtalo: mejor te es entrar a la vida cojo, que teniendo dos pies ser echado en la Gehenna, al fuego que no puede ser apagado;
@@ -5816,7 +5820,7 @@ Marcos 9
 
 
 46 donde el gusano de ellos no muere, y el fuego nunca se apaga.
-46  
+46 ***
 
 
 47 Y si tu ojo te fuere ocasión de caer, sácalo: mejor te es entrar al reino de Dios con un ojo, que teniendo dos ojos ser echado a la Gehenna;
@@ -6148,7 +6152,7 @@ Marcos 11
 
 
 26 Porque si vosotros no perdonareis, tampoco vuestro Padre que está en los cielos os perdonará vuestras ofensas.
-26  
+26 *** 
 
 
 27 Y volvieron a Jerusalem; y andando él por el templo, vienen a él los príncipes de los sacerdotes, y los escribas, y los ancianos;
@@ -10288,7 +10292,7 @@ Y a sus discípulos dice: Imposible es que no vengan escándalos; mas ­ay de aq
 
 
 36 Dos estarán en el campo; el uno será tomado, y el otro dejado.
-36  
+36 ***
 
 
 37 Y respondiendo, le dicen: ¿Dónde, Señor? Y él les dijo: Donde estuviere el cuerpo, allá se juntarán también las águilas.
@@ -12416,7 +12420,7 @@ Juan 5
 
 
 4 Porque un ángel descendía a cierto tiempo al estanque, y revolvía el agua; y el que primero descendía en el estanque después del movimiento del agua, era sano de cualquier enfermedad que tuviese.
-4  
+4 ***
 
 
 5 Y estaba allí un hombre que había treinta y ocho años que estaba enfermo.
@@ -19365,6 +19369,7 @@ Hechos 28
 
 31 predicando el reino de Dios y enseñando lo que es del Señor Jesucristo con toda libertad, sin impedimento.
 31 κηρυσσων την βασιλειαν του θεου και διδασκων τα περι του κυριου ιησου χριστου μετα πασης παρρησιας ακωλυτως
+
 
 
 
