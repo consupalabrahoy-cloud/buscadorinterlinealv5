@@ -106,7 +106,7 @@ def main():
     st.title("Buscador avanzado en texto interlineal 🇬🇷🇪🇸")
     st.markdown("---")
     
-    st.write("Esta aplicación busca palabras o secuencias de letras en español o griego en un archivo de texto interlineal y muestra las ocurrencias y su contexto. El archivo se carga automáticamente desde GitHub. 🔍")
+    st.write("Esta aplicación busca palabras o secuencias de letras en español o griego en un interlineal y muestra las ocurrencias y su contexto. Los datos se cargan automáticamente desde GitHub. 🔍")
 
     file_content = load_text_from_github(GITHUB_RAW_URL)
 
@@ -132,7 +132,8 @@ def main():
                 if not all_occurrences:
                     st.warning(f"No se encontraron coincidencias que contengan '{search_term}' en el archivo.")
                 else:
-                    st.subheader(f"Resultados encontrados ({len(all_occurrences)}):")
+                    #st.subheader(f"Resultados encontrados ({len(all_occurrences)}):")
+                    st.subheader(f"{len(all_occurrences)} resultados encontrados que contienen '{search_term}' :")
                     for occurrence in all_occurrences:
                         st.markdown(f"**{occurrence['heading']}**")
                         st.markdown(f"{occurrence['verse']} {occurrence['spanish_text']}")
@@ -145,3 +146,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
