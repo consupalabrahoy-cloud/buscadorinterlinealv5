@@ -1582,7 +1582,7 @@ Mateo 12
 
 
 47 Y le dijo uno: He aquí tu madre y tus hermanos están fuera, que te quieren hablar.
-47[
+47 [
 
 
 48 Y respondiendo él al que le decía esto, dijo: ¿Quién es mi madre y quiénes son mis hermanos?
@@ -2331,7 +2331,7 @@ Mateo 17
 
 
 21 Mas este linaje no sale sino por oración y ayuno.
-21 β
+21 [β]
 
 
 22 Y estando ellos en Galilea, Jesús les dijo: El Hijo del hombre será entregado en manos de hombres,
@@ -2400,7 +2400,7 @@ Mateo 18
 
 
 11 Porque el Hijo del hombre ha venido para salvar lo que se había perdido.
-11[
+11 [
 
 12 ¿Qué os parece? Si tuviese algún hombre cien ovejas, y se descarriase una de ellas, ¿no iría por los montes, dejadas las noventa y nueve, a buscar la que se había descarriado?
 12 τι υμιν δοκει εαν γενηται τινι ανθρωπω εκατον προβατα και πλανηθη εν εξ αυτων ουχι αφησει τα ενενηκοντα εννεα επι τα ορη και πορευθεις ζητει το πλανωμενον
@@ -5812,7 +5812,7 @@ Marcos 9
 
 
 44 donde su gusano no muere, y el fuego nunca se apaga.
-44[
+44 [
 
 
 45 Y si tu pie te fuere ocasión de caer, córtalo: mejor te es entrar a la vida cojo, que teniendo dos pies ser echado en la Gehenna, al fuego que no puede ser apagado;
@@ -5820,7 +5820,7 @@ Marcos 9
 
 
 46 donde el gusano de ellos no muere, y el fuego nunca se apaga.
-46 β
+46 [β
 
 
 47 Y si tu ojo te fuere ocasión de caer, sácalo: mejor te es entrar al reino de Dios con un ojo, que teniendo dos ojos ser echado a la Gehenna;
@@ -5839,7 +5839,7 @@ Marcos 9
 50 καλον το αλας εαν δε το αλας αναλον γενηται εν τινι αυτο αρτυσετε εχετε εν εαυτοις αλα και ειρηνευετε εν αλληλοις
 
 
-Mateo 10
+Marcos 10
 
 1 Y partiendose de allí, vino a los términos de Judea y tras el Jordán: y volvió el pueblo a juntarse a él; y de nuevo les enseñaba como solía.
 1 και εκειθεν αναστας ερχεται εις τα ορια της ιουδαιας και περαν του ιορδανου και συμπορευονται παλιν οχλοι προς αυτον και ως ειωθει παλιν εδιδασκεν αυτους
@@ -19369,6 +19369,7 @@ Hechos 28
 
 31 predicando el reino de Dios y enseñando lo que es del Señor Jesucristo con toda libertad, sin impedimento.
 31 κηρυσσων την βασιλειαν του θεου και διδασκων τα περι του κυριου ιησου χριστου μετα πασης παρρησιας ακωλυτως
+
 
 
 
