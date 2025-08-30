@@ -6912,7 +6912,7 @@ Y luego por la mañana, habiendo tenido consejo los príncipes de los sacerdotes
 
 
 28 Y se cumplió la Escritura, que dice: Y con los inicuos fué contado.
-28 [ 
+28  [
 
 
 29 Y los que pasaban le denostaban, meneando sus cabezas, y diciendo: ­Ah! tú que derribas el templo de Dios, y en tres días lo edificas,
@@ -19369,6 +19369,7 @@ Hechos 28
 
 31 predicando el reino de Dios y enseñando lo que es del Señor Jesucristo con toda libertad, sin impedimento.
 31 κηρυσσων την βασιλειαν του θεου και διδασκων τα περι του κυριου ιησου χριστου μετα πασης παρρησιας ακωλυτως
+
 
 
 
