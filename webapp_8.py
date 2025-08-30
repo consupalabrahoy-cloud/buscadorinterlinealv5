@@ -12,54 +12,58 @@ def find_and_display_occurrences(lines, search_term):
     current_heading = "Sin encabezado"
     
     # Itera sobre las líneas de dos en dos para emparejar español (i) y griego (i+1)
-    for i in range(0, len(lines), 2):
-        # Ignora las líneas que no siguen el patrón
-        if not lines[i].strip():
-            continue
+    for i in range(0, len(lines) - 1, 2):
+        line1 = lines[i].strip()
+        line2 = lines[i+1].strip()
 
-        # 1. Identifica los encabezados de sección
-        if re.match(r'^[^\d]+\s\d+$', lines[i].strip()):
-            current_heading = lines[i].strip()
+        # Ignora las líneas vacías o los encabezados de sección
+        if not line1:
             continue
-            
-        # 2. Busca el patrón de versículo y texto en español
-        spanish_line_match = re.match(r'^(\d+)\s(.+)$', lines[i].strip())
+        if re.match(r'^[^\d]+\s\d+$', line1):
+            current_heading = line1
+            continue
         
-        # 3. Si se encuentra una línea en español y hay una siguiente línea (griego)
-        if spanish_line_match and i + 1 < len(lines):
-            verse_number = spanish_line_match.group(1)
-            spanish_text = spanish_line_match.group(2)
-            greek_line_raw = lines[i + 1].strip()
-            
-            # --- Lógica de búsqueda en español ---
-            if search_term.lower() in spanish_text.lower():
-                occurrences.append({
-                    "heading": current_heading,
-                    "verse": verse_number,
-                    "spanish_text": spanish_text,
-                    "greek_text": greek_line_raw,
-                    "found_word": search_term,
-                    "language": "Español"
-                })
+        # Identifica el versículo y las líneas de texto
+        spanish_line_match = re.match(r'^(\d+)\s(.+)$', line1)
+        if not spanish_line_match:
+            continue
+        
+        verse_number = spanish_line_match.group(1)
+        spanish_text = spanish_line_match.group(2).strip()
+        greek_text = line2.strip()
+        
+        # --- Lógica de búsqueda en español ---
+        if search_term.lower() in spanish_text.lower():
+            occurrences.append({
+                "heading": current_heading,
+                "verse": verse_number,
+                "spanish_text": spanish_text,
+                "greek_text": greek_text,
+                "found_word": search_term,
+                "language": "Español"
+            })
 
-            # --- Lógica de búsqueda en griego ---
-            words_in_greek_line = re.findall(r'[\w’]+', greek_line_raw)
+        # --- Lógica de búsqueda en griego ---
+        if search_term.lower() in greek_text.lower():
+            words_in_greek_line = re.findall(r'[\w’]+', greek_text)
             for word in words_in_greek_line:
                 if search_term.lower() in word.lower():
-                    occurrences.append({
-                        "heading": current_heading,
-                        "verse": verse_number,
-                        "spanish_text": spanish_text,
-                        "greek_text": greek_line_raw,
-                        "found_word": word,
-                        "language": "Griego"
-                    })
+                    # Evita duplicados si la palabra buscada es la misma en ambos idiomas
+                    if search_term.lower() not in spanish_text.lower() or word.lower() != search_term.lower():
+                        occurrences.append({
+                            "heading": current_heading,
+                            "verse": verse_number,
+                            "spanish_text": spanish_text,
+                            "greek_text": greek_text,
+                            "found_word": word,
+                            "language": "Griego"
+                        })
     
     return occurrences
 
 # --- Lógica para cargar el archivo automáticamente desde GitHub ---
 # URL del archivo de texto en formato "raw" en tu repositorio de GitHub.
-GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/refs/heads/main/NuevoTestamentoInterlineal.txt"
+GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/constructorinterlineal/main/mi_archivo.txt"
 
 @st.cache_data(ttl=3600)
 def load_text_from_github(url):
