@@ -5,60 +5,56 @@ import requests
 def find_and_display_occurrences(lines, search_term):
     """
     Encuentra y muestra todas las ocurrencias de una subcadena en las líneas de texto,
-    incluyendo la línea anterior (español) y la línea actual (griego),
+    incluyendo la línea en español y la línea en griego,
     y además el encabezado de la sección y el número de versículo.
     """
     occurrences = []
-    found_words = set()
     current_heading = "Sin encabezado"
     
-    # Itera sobre las líneas con su índice
+    # Itera sobre las líneas con su índice para emparejar español (i) y griego (i+1)
     for i, line in enumerate(lines):
+        # Ignora las líneas vacías
+        if not line.strip():
+            continue
+
         # 1. Identifica los encabezados de sección
         if re.match(r'^[^\d]+\s\d+$', line.strip()):
             current_heading = line.strip()
-            continue # Salta a la siguiente línea, ya que esta es un encabezado
+            continue
             
-        # 2. Extrae el número de versículo y la línea en español
+        # 2. Busca el patrón de versículo y texto en español
         spanish_line_match = re.match(r'^(\d+)\s(.+)$', line.strip())
         
-        # 3. Busca la palabra en la línea griega, que es la siguiente
-        if i + 1 < len(lines):
+        # 3. Si se encuentra una línea en español y hay una siguiente línea
+        if spanish_line_match and i + 1 < len(lines):
+            verse_number = spanish_line_match.group(1)
+            spanish_text = spanish_line_match.group(2)
             greek_line_raw = lines[i + 1].strip()
             
-            # Utiliza una expresión regular para encontrar todas las palabras en la línea griega
+            # --- Lógica de búsqueda en español ---
+            if search_term.lower() in spanish_text.lower():
+                occurrences.append({
+                    "heading": current_heading,
+                    "verse": verse_number,
+                    "spanish_text": spanish_text,
+                    "greek_text": greek_line_raw,
+                    "found_word": search_term,
+                    "language": "Español"
+                })
+
+            # --- Lógica de búsqueda en griego ---
             words_in_greek_line = re.findall(r'[\w’]+', greek_line_raw)
-            
-            # Lógica para encontrar coincidencias tanto en español como en griego
-            if spanish_line_match:
-                spanish_text = spanish_line_match.group(2)
-                verse_number = spanish_line_match.group(1)
-                
-                # Busca en la línea en español
-                if search_term.lower() in spanish_text.lower():
-                    found_words.add(search_term)
-                    occurrences.append({
-                        "heading": current_heading,
-                        "verse": verse_number,
-                        "spanish_text": spanish_text,
-                        "greek_text": greek_line_raw,
-                        "found_word": search_term,
-                        "language": "Español"
-                    })
-                
-                # Busca en la línea en griego
-                for word in words_in_greek_line:
-                    if search_term.lower() in word.lower():
-                        found_words.add(word)
-                        if greek_line_raw.startswith(verse_number):
-                            greek_text = greek_line_raw[len(verse_number):].strip()
-                        else:
-                            greek_text = greek_line_raw
+            for word in words_in_greek_line:
+                if search_term.lower() in word.lower():
+                    # Para evitar duplicados en la búsqueda bilingüe,
+                    # solo agregamos la ocurrencia si la palabra en español no coincide
+                    # (o si la palabra en español no es la misma palabra buscada).
+                    if search_term.lower() != spanish_text.lower():
                         occurrences.append({
                             "heading": current_heading,
                             "verse": verse_number,
                             "spanish_text": spanish_text,
-                            "greek_text": greek_text,
+                            "greek_text": greek_line_raw,
                             "found_word": word,
                             "language": "Griego"
                         })
@@ -67,7 +63,7 @@ def find_and_display_occurrences(lines, search_term):
 
 # --- Lógica para cargar el archivo automáticamente desde GitHub ---
 # URL del archivo de texto en formato "raw" en tu repositorio de GitHub.
-GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/refs/heads/main/NuevoTestamentoInterlineal.txt"
+GITHUB_RAW_URL = ""
 
 @st.cache_data(ttl=3600)
 def load_text_from_github(url):
@@ -165,4 +161,3 @@ def main():
 # Ejecuta la función principal si el script se ejecuta directamente
 if __name__ == "__main__":
     main()
-
