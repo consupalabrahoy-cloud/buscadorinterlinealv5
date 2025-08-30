@@ -17526,7 +17526,7 @@ Hechos 15
 
 
 34 Mas a Silas pareció bien el quedarse allí.
-34  
+34 β 
 
 
 35 Y Pablo y Bernabé se estaban en Antioquía, enseñando la palabra del Señor y anunciando el evangelio con otros muchos.
@@ -18744,7 +18744,7 @@ Hechos 24
 
 
 7 Mas interviniendo el tribuno Lisias, con grande violencia le quitó de nuestras manos,
-7  
+7 β 
 
 
 8 mandando a sus acusadores que viniesen a ti; del cual tú mismo juzgando, podrás entender todas estas cosas de que le acusamos.
@@ -19360,7 +19360,7 @@ Hechos 28
 
 
 29 Y habiendo dicho esto, los Judíos salieron, teniendo entre sí gran contienda.
-29  
+29 β
 
 
 30 Pablo empero, quedó dos años enteros en su casa de alquiler, y recibía a todos los que a él venían,
@@ -19369,6 +19369,7 @@ Hechos 28
 
 31 predicando el reino de Dios y enseñando lo que es del Señor Jesucristo con toda libertad, sin impedimento.
 31 κηρυσσων την βασιλειαν του θεου και διδασκων τα περι του κυριου ιησου χριστου μετα πασης παρρησιας ακωλυτως
+
 
 
 
