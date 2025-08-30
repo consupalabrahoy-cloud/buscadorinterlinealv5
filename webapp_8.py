@@ -1,62 +1,86 @@
 import streamlit as st
 import re
 import requests
-import unicodedata
 
-def find_occurrences(lines, search_term):
+def parse_interlinear_text(lines):
     """
-    Encuentra todas las ocurrencias de un término de búsqueda en pares de líneas
-    y devuelve una lista de resultados, asegurando el emparejamiento correcto.
+    Parsea las líneas del texto para agrupar versículos en pares español-griego.
+    """
+    verses = []
+    current_heading = "Sin encabezado"
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        if not line:
+            i += 1
+            continue
+
+        # Detectar encabezado de sección (ej. "Mateo 1")
+        if re.match(r'^[^\d]+\s\d+$', line):
+            current_heading = line
+            i += 1
+            continue
+
+        # Detectar la línea en español
+        spanish_line_match = re.match(r'^(\d+)\s(.*)$', line)
+        if spanish_line_match:
+            verse_number = spanish_line_match.group(1)
+            spanish_text = spanish_line_match.group(2).strip()
+
+            # Capturar líneas adicionales de texto español si el versículo se extiende
+            j = i + 1
+            while j < len(lines) and not re.match(r'^\d+', lines[j].strip()) and lines[j].strip():
+                spanish_text += " " + lines[j].strip()
+                j += 1
+            
+            # La siguiente línea numerada es la griega
+            if j < len(lines):
+                greek_line_match = re.match(r'^\d+\s(.+)$', lines[j].strip())
+                if greek_line_match:
+                    greek_text = greek_line_match.group(1).strip()
+                    verses.append({
+                        "heading": current_heading,
+                        "verse": verse_number,
+                        "spanish": spanish_text,
+                        "greek": greek_text
+                    })
+                    i = j + 1
+                    continue
+        
+        i += 1
+    return verses
+
+def find_occurrences(parsed_verses, search_term):
+    """
+    Busca un término en los versos ya parseados.
     """
     occurrences = []
-    current_heading = "Sin encabezado"
     
-    # Itera sobre las líneas de dos en dos para emparejar español (i) y griego (i+1)
-    for i in range(0, len(lines) - 1, 2):
-        line1 = lines[i].strip()
-        line2 = lines[i+1].strip()
-
-        # Ignora las líneas vacías o los encabezados de sección
-        if not line1:
-            continue
-        if re.match(r'^[^\d]+\s\d+$', line1):
-            current_heading = line1
-            continue
-        
-        # Identifica el versículo y las líneas de texto
-        spanish_line_match = re.match(r'^(\d+)\s(.+)$', line1)
-        if not spanish_line_match:
-            continue
-        
-        verse_number = spanish_line_match.group(1)
-        spanish_text = spanish_line_match.group(2).strip()
-        greek_text = line2.strip()
-        
-        # Lógica de búsqueda separada por idioma
+    for verse in parsed_verses:
         # Búsqueda en español
-        if search_term.lower() in spanish_text.lower():
+        if search_term.lower() in verse['spanish'].lower():
             occurrences.append({
-                "heading": current_heading,
-                "verse": verse_number,
-                "spanish_text": spanish_text,
-                "greek_text": greek_text,
+                "heading": verse['heading'],
+                "verse": verse['verse'],
+                "spanish_text": verse['spanish'],
+                "greek_text": verse['greek'],
                 "found_word": search_term,
                 "language": "Español"
             })
-
+        
         # Búsqueda en griego
-        if search_term.lower() in greek_text.lower():
-            # Evita duplicar resultados si la palabra se encuentra en ambos idiomas
-            if search_term.lower() not in spanish_text.lower():
+        if search_term.lower() in verse['greek'].lower():
+            # Evita duplicar si la palabra está en ambos idiomas
+            if search_term.lower() not in verse['spanish'].lower():
                 occurrences.append({
-                    "heading": current_heading,
-                    "verse": verse_number,
-                    "spanish_text": spanish_text,
-                    "greek_text": greek_text,
+                    "heading": verse['heading'],
+                    "verse": verse['verse'],
+                    "spanish_text": verse['spanish'],
+                    "greek_text": verse['greek'],
                     "found_word": search_term,
                     "language": "Griego"
                 })
-
+    
     return occurrences
 
 # --- Lógica para cargar el archivo automáticamente desde GitHub ---
@@ -91,7 +115,7 @@ def main():
 
     search_term = st.text_input(
         "Ingresa la secuencia de letras a buscar:",
-        placeholder="Ejemplo: σπ o am"
+        placeholder="Ejemplo: σπ o libertad"
     )
 
     st.markdown("---")
@@ -102,9 +126,8 @@ def main():
         else:
             try:
                 lines = file_content.splitlines()
-                lines = [line for line in lines if line.strip()]
-
-                all_occurrences = find_occurrences(lines, search_term)
+                all_verses = parse_interlinear_text(lines)
+                all_occurrences = find_occurrences(all_verses, search_term)
                 
                 if not all_occurrences:
                     st.warning(f"No se encontraron coincidencias que contengan '{search_term}' en el archivo.")
