@@ -3,14 +3,6 @@ import re
 import requests
 import unicodedata
 
-def is_greek(text):
-    """Verifica si el texto contiene caracteres griegos."""
-    for char in text:
-        # Se utilizan rangos Unicode para detectar caracteres griegos
-        if 'GREEK' in unicodedata.name(char, '').upper():
-            return True
-    return False
-
 def find_occurrences(lines, search_term):
     """
     Encuentra todas las ocurrencias de un término de búsqueda en pares de líneas
@@ -19,9 +11,7 @@ def find_occurrences(lines, search_term):
     occurrences = []
     current_heading = "Sin encabezado"
     
-    is_greek_search = is_greek(search_term)
-
-    # Itera sobre las líneas de dos en dos
+    # Itera sobre las líneas de dos en dos para emparejar español (i) y griego (i+1)
     for i in range(0, len(lines) - 1, 2):
         line1 = lines[i].strip()
         line2 = lines[i+1].strip()
@@ -43,32 +33,30 @@ def find_occurrences(lines, search_term):
         greek_text = line2.strip()
         
         # Lógica de búsqueda separada por idioma
-        if is_greek_search:
-            # Búsqueda en griego
-            if search_term.lower() in greek_text.lower():
-                words_in_greek_line = re.findall(r'[\w’]+', greek_text)
-                found_word = next((word for word in words_in_greek_line if search_term.lower() in word.lower()), None)
-                if found_word:
-                    occurrences.append({
-                        "heading": current_heading,
-                        "verse": verse_number,
-                        "spanish_text": spanish_text,
-                        "greek_text": greek_text,
-                        "found_word": found_word,
-                        "language": "Griego"
-                    })
-        else:
-            # Búsqueda en español
-            if search_term.lower() in spanish_text.lower():
+        # Búsqueda en español
+        if search_term.lower() in spanish_text.lower():
+            occurrences.append({
+                "heading": current_heading,
+                "verse": verse_number,
+                "spanish_text": spanish_text,
+                "greek_text": greek_text,
+                "found_word": search_term,
+                "language": "Español"
+            })
+
+        # Búsqueda en griego
+        if search_term.lower() in greek_text.lower():
+            # Evita duplicar resultados si la palabra se encuentra en ambos idiomas
+            if search_term.lower() not in spanish_text.lower():
                 occurrences.append({
                     "heading": current_heading,
                     "verse": verse_number,
                     "spanish_text": spanish_text,
                     "greek_text": greek_text,
                     "found_word": search_term,
-                    "language": "Español"
+                    "language": "Griego"
                 })
-    
+
     return occurrences
 
 # --- Lógica para cargar el archivo automáticamente desde GitHub ---
@@ -119,19 +107,15 @@ def main():
                 all_occurrences = find_occurrences(lines, search_term)
                 
                 if not all_occurrences:
-                    st.warning(f"No se encontraron palabras que contengan '{search_term}' en el archivo.")
+                    st.warning(f"No se encontraron coincidencias que contengan '{search_term}' en el archivo.")
                 else:
-                    # Usa el idioma del primer resultado para nombrar la pestaña
-                    first_language = all_occurrences[0]["language"]
-                    tab_name = f"Resultados en {first_language} ({len(all_occurrences)})"
-                    
-                    with st.expander(tab_name, expanded=True):
-                        for occurrence in all_occurrences:
-                            st.markdown(f"**{occurrence['heading']}**")
-                            st.markdown(f"{occurrence['verse']} {occurrence['spanish_text']}")
-                            st.markdown(f"{occurrence['verse']} {occurrence['greek_text']}")
-                            st.markdown(f"**Palabra encontrada:** `{occurrence['found_word']}`")
-                            st.markdown("---")
+                    st.subheader(f"Resultados encontrados ({len(all_occurrences)}):")
+                    for occurrence in all_occurrences:
+                        st.markdown(f"**{occurrence['heading']}**")
+                        st.markdown(f"{occurrence['verse']} {occurrence['spanish_text']}")
+                        st.markdown(f"{occurrence['verse']} {occurrence['greek_text']}")
+                        st.markdown(f"**Coincidencia encontrada en {occurrence['language']}:** `{occurrence['found_word']}`")
+                        st.markdown("---")
 
             except Exception as e:
                 st.error(f"Ocurrió un error al procesar el archivo: {e}")
