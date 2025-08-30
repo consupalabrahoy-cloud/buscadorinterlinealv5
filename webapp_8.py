@@ -11,21 +11,21 @@ def find_and_display_occurrences(lines, search_term):
     occurrences = []
     current_heading = "Sin encabezado"
     
-    # Itera sobre las líneas con su índice para emparejar español (i) y griego (i+1)
-    for i, line in enumerate(lines):
-        # Ignora las líneas vacías
-        if not line.strip():
+    # Itera sobre las líneas de dos en dos para emparejar español (i) y griego (i+1)
+    for i in range(0, len(lines), 2):
+        # Ignora las líneas que no siguen el patrón
+        if not lines[i].strip():
             continue
 
         # 1. Identifica los encabezados de sección
-        if re.match(r'^[^\d]+\s\d+$', line.strip()):
-            current_heading = line.strip()
+        if re.match(r'^[^\d]+\s\d+$', lines[i].strip()):
+            current_heading = lines[i].strip()
             continue
             
         # 2. Busca el patrón de versículo y texto en español
-        spanish_line_match = re.match(r'^(\d+)\s(.+)$', line.strip())
+        spanish_line_match = re.match(r'^(\d+)\s(.+)$', lines[i].strip())
         
-        # 3. Si se encuentra una línea en español y hay una siguiente línea
+        # 3. Si se encuentra una línea en español y hay una siguiente línea (griego)
         if spanish_line_match and i + 1 < len(lines):
             verse_number = spanish_line_match.group(1)
             spanish_text = spanish_line_match.group(2)
@@ -46,18 +46,14 @@ def find_and_display_occurrences(lines, search_term):
             words_in_greek_line = re.findall(r'[\w’]+', greek_line_raw)
             for word in words_in_greek_line:
                 if search_term.lower() in word.lower():
-                    # Para evitar duplicados en la búsqueda bilingüe,
-                    # solo agregamos la ocurrencia si la palabra en español no coincide
-                    # (o si la palabra en español no es la misma palabra buscada).
-                    if search_term.lower() != spanish_text.lower():
-                        occurrences.append({
-                            "heading": current_heading,
-                            "verse": verse_number,
-                            "spanish_text": spanish_text,
-                            "greek_text": greek_line_raw,
-                            "found_word": word,
-                            "language": "Griego"
-                        })
+                    occurrences.append({
+                        "heading": current_heading,
+                        "verse": verse_number,
+                        "spanish_text": spanish_text,
+                        "greek_text": greek_line_raw,
+                        "found_word": word,
+                        "language": "Griego"
+                    })
     
     return occurrences
 
@@ -161,4 +157,3 @@ def main():
 # Ejecuta la función principal si el script se ejecuta directamente
 if __name__ == "__main__":
     main()
-
