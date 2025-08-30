@@ -1582,7 +1582,7 @@ Mateo 12
 
 
 47 Y le dijo uno: He aquí tu madre y tus hermanos están fuera, que te quieren hablar.
-47 β 
+47ααα
 
 
 48 Y respondiendo él al que le decía esto, dijo: ¿Quién es mi madre y quiénes son mis hermanos?
@@ -2400,7 +2400,7 @@ Mateo 18
 
 
 11 Porque el Hijo del hombre ha venido para salvar lo que se había perdido.
-11 β 
+11ααα
 
 12 ¿Qué os parece? Si tuviese algún hombre cien ovejas, y se descarriase una de ellas, ¿no iría por los montes, dejadas las noventa y nueve, a buscar la que se había descarriado?
 12 τι υμιν δοκει εαν γενηται τινι ανθρωπω εκατον προβατα και πλανηθη εν εξ αυτων ουχι αφησει τα ενενηκοντα εννεα επι τα ορη και πορευθεις ζητει το πλανωμενον
@@ -3185,7 +3185,7 @@ Mateo 23
 
 
 14 Ay de vosotros, escribas y Fariseos, hipócritas! porque coméis las casas de las viudas, y por pretexto hacéis larga oración: por esto llevaréis mas grave juicio.
-14 β 
+14ααα
 
 
 15 Ay de vosotros, escribas y Fariseos, hipócritas! porque rodeáis la mar y la tierra por hacer un prosélito; y cuando fuere hecho, le hacéis hijo del infierno doble más que vosotros.
@@ -5812,7 +5812,7 @@ Marcos 9
 
 
 44 donde su gusano no muere, y el fuego nunca se apaga.
-44 β 
+44ααα
 
 
 45 Y si tu pie te fuere ocasión de caer, córtalo: mejor te es entrar a la vida cojo, que teniendo dos pies ser echado en la Gehenna, al fuego que no puede ser apagado;
@@ -6152,7 +6152,7 @@ Marcos 11
 
 
 26 Porque si vosotros no perdonareis, tampoco vuestro Padre que está en los cielos os perdonará vuestras ofensas.
-26 β 
+26ααα
 
 
 27 Y volvieron a Jerusalem; y andando él por el templo, vienen a él los príncipes de los sacerdotes, y los escribas, y los ancianos;
@@ -19369,6 +19369,7 @@ Hechos 28
 
 31 predicando el reino de Dios y enseñando lo que es del Señor Jesucristo con toda libertad, sin impedimento.
 31 κηρυσσων την βασιλειαν του θεου και διδασκων τα περι του κυριου ιησου χριστου μετα πασης παρρησιας ακωλυτως
+
 
 
 
