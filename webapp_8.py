@@ -85,7 +85,8 @@ def find_occurrences(parsed_verses, search_term):
 
 # --- Lógica para cargar el archivo automáticamente desde GitHub ---
 # URL del archivo de texto en formato "raw" en tu repositorio de GitHub.
-GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/refs/heads/main/NuevoTestamentoInterlineal.txt"
+#GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/refs/heads/main/NuevoTestamentoInterlineal.txt"
+GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/main/NuevoTestamentoInterlineal.txt"
 
 @st.cache_data(ttl=3600)
 def load_text_from_github(url):
@@ -146,4 +147,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
