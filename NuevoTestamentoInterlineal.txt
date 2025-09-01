@@ -1,5 +1,6 @@
 Mateo 1
 
+
 1 Libro de la generación de Jesucristo, hijo de David, hijo de Abraham.
 1 βιβλος γενεσεως ιησου χριστου υιου δαυιδ υιου αβρααμ
 
@@ -22270,6 +22271,7 @@ Primera de Corintios 11
 
 Primera de Corintios 12
 
+
 1 Y acerca de los dones espirituales, no quiero, hermanos, que ignoréis.
 1 περι δε των πνευματικων αδελφοι ου θελω υμας αγνοειν
 
@@ -22451,6 +22453,7 @@ Primera de Corintios 13
 
 Primera de Corintios 14
 
+
 1 Seguid la caridad; y procurad los dones espirituales, mas sobre todo que profeticéis.
 1 διωκετε την αγαπην ζηλουτε δε τα πνευματικα μαλλον δε ινα προφητευητε
 
@@ -22612,6 +22615,7 @@ Primera de Corintios 14
 
 
 Primera de Corintios 15
+
 
 1 Además os declaro, hermanos, el evangelio que os he predicado, el cual también recibisteis, en el cual también perseveráis;
 1 γνωριζω δε υμιν αδελφοι το ευαγγελιον ο ευηγγελισαμην υμιν ο και παρελαβετε εν ω και εστηκατε
@@ -22846,6 +22850,7 @@ Primera de Corintios 15
 
 
 Primera de Corintios 16
+
 
 1 Cuanto a la colecta para los santos, haced vosotros también de la manera que ordené en las iglesias de Galacia.
 1 περι δε της λογειας της εις τους αγιους ωσπερ διεταξα ταις εκκλησιαις της γαλατιας ουτως και υμεις ποιησατε
@@ -24008,6 +24013,7 @@ Segunda de Corintios 13
 
 14 La gracia del Señor Jesucristo, y el amor de Dios, y la participación del Espíritu Santo sea con vosotros todos. Amén. Epístola a los Corintios fué enviada de Filipos de Macedonia con Tito y Lucas.
 14 η χαρις του κυριου ιησου χριστου και η αγαπη του θεου και η κοινωνια του αγιου πνευματος μετα παντων υμων
+
 
 
 
