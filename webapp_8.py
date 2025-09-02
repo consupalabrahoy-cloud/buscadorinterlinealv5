@@ -46,7 +46,7 @@ def parse_interlinear_text(lines):
                     })
                     i = j + 1
                     continue
-        
+            
         i += 1
     return verses
 
@@ -84,9 +84,8 @@ def find_occurrences(parsed_verses, search_term):
     return occurrences
 
 # --- Lógica para cargar el archivo automáticamente desde GitHub ---
-# URL del archivo de texto en formato "raw" en tu repositorio de GitHub.
-#GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/refs/heads/main/NuevoTestamentoInterlineal.txt"
-GITHUB_RAW_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/main/NuevoTestamentoInterlineal.txt"
+# URL del archivo de texto con el enlace de descarga de los datos
+GITHUB_LINK_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/main/DATOS.txt"
 
 @st.cache_data(ttl=3600)
 def load_text_from_github(url):
@@ -109,7 +108,14 @@ def main():
     
     st.write("Esta aplicación busca palabras o secuencias de letras en español o griego en un interlineal y muestra las ocurrencias y su contexto. Los datos se cargan automáticamente desde GitHub. 🔍")
 
-    file_content = load_text_from_github(GITHUB_RAW_URL)
+    # Obtiene la URL del archivo de datos desde el archivo DATOS.txt en GitHub
+    data_url_from_github = load_text_from_github(GITHUB_LINK_URL)
+    
+    if data_url_from_github is None:
+        return
+
+    # Carga el contenido del archivo de datos real desde la URL obtenida
+    file_content = load_text_from_github(data_url_from_github.strip())
 
     if file_content is None:
         return
@@ -133,7 +139,6 @@ def main():
                 if not all_occurrences:
                     st.warning(f"No se encontraron coincidencias que contengan '{search_term}' en el archivo.")
                 else:
-                    #st.subheader(f"Resultados encontrados ({len(all_occurrences)}):")
                     st.subheader(f"{len(all_occurrences)} resultados encontrados que contienen '{search_term}' :")
                     for occurrence in all_occurrences:
                         st.markdown(f"**{occurrence['heading']}**")
@@ -147,5 +152,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
