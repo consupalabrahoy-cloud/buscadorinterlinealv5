@@ -85,17 +85,23 @@ def find_occurrences(parsed_verses, search_term):
 
 # --- Lógica para cargar el archivo automáticamente desde GitHub ---
 # URL del archivo de texto con el enlace de descarga de los datos
-GITHUB_LINK_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/main/datos.txt"
+GITHUB_LINK_URL = "https://raw.githubusercontent.com/consupalabrahoy-cloud/buscadorinterlinealv5/main/DATOS.txt"
 
 @st.cache_data(ttl=3600)
 def load_text_from_github(url):
     """Carga el contenido de un archivo de texto desde una URL de GitHub."""
+    
+    # Se crea un encabezado (headers) para simular una solicitud desde un navegador.
+    # Esto puede ayudar a evitar que Google Drive bloquee la solicitud.
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+
     try:
-        response = requests.get(url)
+        response = requests.get(url, headers=headers)
         if response.status_code == 200:
             return response.text
         else:
             st.error(f"Error al cargar el archivo desde GitHub. Código de estado: {response.status_code}")
+            st.error("Es posible que el enlace no sea de descarga directa o que el archivo no esté configurado como público.")
             return None
     except Exception as e:
         st.error(f"Ocurrió un error inesperado al cargar el archivo: {e}")
@@ -152,5 +158,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
