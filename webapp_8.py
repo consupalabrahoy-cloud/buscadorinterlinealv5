@@ -103,7 +103,7 @@ def load_text_from_github(url):
 
 def main():
     """Función principal de la aplicación Streamlit."""
-    st.title("Buscador avanzado en texto interlineal 🇬🇷🇪🇸")
+    st.title("Buscador avanzado en texto interlineal español-griego")
     st.markdown("---")
     
     st.write("Esta aplicación busca palabras o secuencias de letras en español o griego en un interlineal y muestra las ocurrencias y su contexto. Los datos se cargan automáticamente desde GitHub. 🔍")
@@ -152,4 +152,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
